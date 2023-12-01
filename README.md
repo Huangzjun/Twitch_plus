@@ -105,10 +105,11 @@ The backend of this project is built using **Spring Boot**, a powerful framework
 
 ### Docker Integration
 1. **Build Docker Image**:
+    
     ```sh
     ./gradlew bootBuildImage --imageName=<account-id>.dkr.ecr.us-west-2.amazonaws.com/<repository-name>
     ```
-
+    
 2. **Run with Docker Compose**:
     ```sh
     docker-compose up
@@ -117,14 +118,11 @@ The backend of this project is built using **Spring Boot**, a powerful framework
 ### Cloud Deployment with AWS
 
 #### AWS ECR (Elastic Container Registry)
-AWS ECR is used to store Docker images. It integrates with AWS IAM to control access to your repositories and images.
-
-1. **Push Docker Image to AWS ECR**:
-    ```sh
-    aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin <account-id>.dkr.ecr.us-west-2.amazonaws.com
-    docker tag <image-name>:latest <account-id>.dkr.ecr.us-west-2.amazonaws.com/<repository-name>:latest
-    docker push <account-id>.dkr.ecr.us-west-2.amazonaws.com/<repository-name>:latest
-    ```
+```sh
+aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin <account-id>.dkr.ecr.us-west-2.amazonaws.com
+docker tag <image-name>:latest <account-id>.dkr.ecr.us-west-2.amazonaws.com/<repository-name>:latest
+docker push <account-id>.dkr.ecr.us-west-2.amazonaws.com/<repository-name>:latest
+```
 
 #### AWS IAM (Identity and Access Management)
 AWS IAM is used to manage access to AWS services and resources securely. You can create IAM roles and policies to control who can access your ECR repositories and ECS/EKS clusters.
