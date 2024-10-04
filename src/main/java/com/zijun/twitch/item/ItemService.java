@@ -1,11 +1,12 @@
 package com.zijun.twitch.item;
 
 
-import com.zijun.twitch.model.TypeGroupedItemList;
 import com.zijun.twitch.external.TwitchService;
 import com.zijun.twitch.external.model.Clip;
 import com.zijun.twitch.external.model.Stream;
 import com.zijun.twitch.external.model.Video;
+import com.zijun.twitch.model.TypeGroupedItemList;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 
@@ -27,6 +28,7 @@ public class ItemService {
     }
 
 
+    @Cacheable("items")
     public TypeGroupedItemList getItems(String gameId) {
         List<Video> videos = twitchService.getVideos(gameId, SEARCH_RESULT_SIZE);
         List<Clip> clips = twitchService.getClips(gameId, SEARCH_RESULT_SIZE);
@@ -34,5 +36,3 @@ public class ItemService {
         return new TypeGroupedItemList(gameId, streams, videos, clips);
     }
 }
-
-

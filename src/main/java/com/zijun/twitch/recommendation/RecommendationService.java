@@ -7,6 +7,7 @@ import com.zijun.twitch.external.TwitchService;
 import com.zijun.twitch.external.model.Video;
 import com.zijun.twitch.favorite.FavoriteService;
 import com.zijun.twitch.model.TypeGroupedItemList;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 
@@ -36,8 +37,7 @@ public class RecommendationService {
     }
 
 
-
-
+    @Cacheable("recommend_items")
     public TypeGroupedItemList recommendItems(UserEntity userEntity) {
         List<String> gameIds;
         Set<String> exclusions = new HashSet<>();
