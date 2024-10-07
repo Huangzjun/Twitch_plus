@@ -22,7 +22,7 @@ Url：https://3zkx3mvm3q.us-west-2.awsapprunner.com/
 
 ## Frontend Architecture
 
-https://github.com/Huangzjun/Twitch_plus_fe/blob/main/README.md
+https://github.com/Huangzjun/Twitch_plus_fe
 
 ## Backend Architecture
 
